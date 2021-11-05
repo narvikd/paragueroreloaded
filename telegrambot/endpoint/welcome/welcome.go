@@ -11,7 +11,7 @@ func Welcome(bot *tb.Bot, src *tb.Message) {
 	userName := src.Sender.Username
 	senderMention := "<a href=\"tg://user?id=" + strconv.Itoa(src.Sender.ID) + "\">@" + userName + "</a>"
 	if userName == "" {
-		senderMention = src.Sender.FirstName
+		senderMention = "<a href=\"tg://user?id=" + strconv.Itoa(src.Sender.ID) + "\">" + src.Sender.FirstName + "</a>"
 	}
 	_, err := bot.Send(chatID, getMsg(senderMention), "html")
 	logger.LogIfError(err, "error")
