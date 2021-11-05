@@ -1,7 +1,7 @@
 # Paraguas Bot Reloaded
 
 ## Usage
-You need an env file ("env.env") on the root directory which contains at least a "TOKENPROD" key/value pair.
+You need an env file ("env.env") on the root directory which contains at least a "TOKENPROD" or "TOKENDEV" key/value pair.
 
 Example:
 ```shell
