@@ -31,7 +31,7 @@ func getMsg(senderMention string) string {
 		"yo te bendigo y te doy la bienvenida, " +
 		senderMention
 	return message
-  }
+}
 
 func genMsg() []string {
 	var msgSlice []string
