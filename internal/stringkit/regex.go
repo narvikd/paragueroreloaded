@@ -2,6 +2,7 @@ package stringkit
 
 import "regexp"
 
+// IsRegexMatch returns true if the string matches the regexp.
 // IsRegexMatch exists because
 // "if matchString, _ := regexp.MatchString(pattern, cleanedReceivedMessage); matchString"
 // is ugly as sin

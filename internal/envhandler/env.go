@@ -8,6 +8,7 @@ import (
 	"paraguero_reloaded/internal/stringkit"
 )
 
+// LoadEnv loads an .env file specified as a parameter
 func LoadEnv(fileName string) {
 	log := logger.GetLog()
 	err := godotenv.Load(fileName)
@@ -16,6 +17,7 @@ func LoadEnv(fileName string) {
 	}
 }
 
+// GetToken returns the token from the .env file. It should be used after LoadEnv is successful
 func GetToken() (string, error) {
 	env := os.Getenv("TOKEN")
 	if !stringkit.IsStrEmpty(env) {

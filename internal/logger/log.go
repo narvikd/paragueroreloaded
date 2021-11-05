@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// GetLog returns a new properly formatted instance of logrus.Logger
 func GetLog() *logrus.Logger {
 	var log = logrus.New()
 	// This format is not to be changed to your current time, this is according to the constants at: https://golang.org/pkg/time/#pkg-constants
@@ -12,6 +13,7 @@ func GetLog() *logrus.Logger {
 	return log
 }
 
+// LogIfError logs the error if it's not nil
 func LogIfError(err error, errType string) {
 	log := GetLog()
 	if err != nil {

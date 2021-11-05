@@ -7,6 +7,8 @@ import (
 	"paraguero_reloaded/internal/logger"
 )
 
+// SeedRNG seeds the math/rand RNG according to: https://stackoverflow.com/a/54491783.
+// It should be initialized as soon as possible in the application.
 func SeedRNG() {
 	log := logger.GetLog()
 	var b [8]byte
