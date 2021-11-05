@@ -10,7 +10,7 @@ func links(bot *tb.Bot, route string) {
 	menu.Inline(
 		menu.Row(
 			menu.URL("Hilo Forocoches 🚗", "https://www.forocoches.com/foro/showthread.php?t=8055773"),
-			menu.URL("¿Quien soy? 🐸", "http://google.com"),
+			menu.URL("¿Quien soy? 🐸", "https://github.com/narvikd/paragueroreloaded"),
 		),
 		menu.Row(
 			menu.URL("Enlace grupo 🔗", "https://bit.ly/dawdamfc"),
