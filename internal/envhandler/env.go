@@ -18,9 +18,9 @@ func LoadEnv(fileName string) {
 func GetToken(environmentVar string) (string, error) {
 	switch environmentVar {
 	case "PROD":
-		return os.Getenv("TOKENPROD"), nil
+		return os.Getenv("TOKEN_PROD"), nil
 	case "DEV":
-		return os.Getenv("TOKENDEV"), nil
+		return os.Getenv("TOKEN_DEV"), nil
 	default:
 		return "", errors.New("environment not set correctly")
 	}

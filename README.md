@@ -5,12 +5,12 @@ You need an env file ("env.env") on the root directory which contains at least a
 
 Example:
 ```shell
-TOKENPROD=YOURSECRETKEYGOESHERE
+TOKEN_PROD=YOURSECRETKEYGOESHERE
 ```
 Another example where you have the two possible token env vars:
 ```shell
-TOKENPROD=YOURSECRETKEYGOESHERE
-TOKENDEV=YOURSECRETKEYGOESHERE
+TOKEN_PROD=YOURSECRETKEYGOESHERE
+TOKEN_DEV=YOURSECRETKEYGOESHERE
 ```
 
 ## Supported Platforms
