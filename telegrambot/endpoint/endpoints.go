@@ -8,7 +8,7 @@ import (
 	"paraguero_reloaded/telegrambot/handler/onuserjoin"
 )
 
-// LoadEndpoints is where endpoints are declared
+// LoadEndpoints loads all the endpoints, and it's where they're declared
 func LoadEndpoints(bot *tb.Bot) {
 	links(bot, "/links")
 	onuserjoin.AddEndpoint(bot, welcomeEndpoint.Welcome)

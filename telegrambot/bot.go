@@ -8,6 +8,7 @@ import (
 
 var log = logger.GetLog()
 
+// CreateBot creates a new bot object with the given token
 func CreateBot(token string) *tb.Bot {
 	bot, err := tb.NewBot(tb.Settings{
 		Token: token,

@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// paraguas is an endpoint that executes if the "Abriendo paraguas" regex is triggered
 func paraguas(bot *tb.Bot, src *tb.Message) {
 	const regexPattern = "abr(e|o|iendo) paraguas"
 	cleanedReceivedMessage := strings.ToLower(src.Text)
@@ -20,6 +21,7 @@ func paraguas(bot *tb.Bot, src *tb.Message) {
 	}
 }
 
+// paraguasSticker is an endpoint that executes if a paraguas sticker is received
 func paraguasSticker(bot *tb.Bot, src *tb.Message) {
 	var stickers = []string{
 		"AgADWgADLMqqBw",

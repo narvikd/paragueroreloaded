@@ -5,6 +5,7 @@ import (
 	"paraguero_reloaded/telegrambot"
 )
 
+// links is an endpoint for the (default) /links command.
 func links(bot *tb.Bot, route string) {
 	menu := bot.NewMarkup()
 	menu.Inline(
