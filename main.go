@@ -8,15 +8,13 @@ import (
 	"paraguero_reloaded/telegrambot/endpoint"
 )
 
-const environment = "PROD"
-
 func init() {
 	appinit.SeedRNG()
 	envhandler.LoadEnv("env.env")
 }
 
 func main() {
-	token, err := envhandler.GetToken(environment)
+	token, err := envhandler.GetToken()
 	logger.LogIfError(err, "fatal")
 	bot := telegrambot.CreateBot(token)
 	endpoint.LoadEndpoints(bot)

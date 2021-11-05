@@ -14,3 +14,7 @@ func SliceContains(slice []string, str string) bool {
 	}
 	return false
 }
+
+func IsStrEmpty(str string) bool {
+	return str == ""
+}

@@ -5,6 +5,7 @@ import (
 	"github.com/joho/godotenv"
 	"os"
 	"paraguero_reloaded/internal/logger"
+	"paraguero_reloaded/internal/stringkit"
 )
 
 func LoadEnv(fileName string) {
@@ -15,13 +16,10 @@ func LoadEnv(fileName string) {
 	}
 }
 
-func GetToken(environmentVar string) (string, error) {
-	switch environmentVar {
-	case "PROD":
-		return os.Getenv("TOKEN_PROD"), nil
-	case "DEV":
-		return os.Getenv("TOKEN_DEV"), nil
-	default:
-		return "", errors.New("environment not set correctly")
+func GetToken() (string, error) {
+	env := os.Getenv("TOKEN")
+	if !stringkit.IsStrEmpty(env) {
+		return env, nil
 	}
+	return "", errors.New("\"TOKEN\" env variable was not found on the .env file")
 }

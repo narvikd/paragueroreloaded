@@ -1,16 +1,11 @@
 # Paraguas Bot Reloaded
 
 ## Usage
-You need an env file ("env.env") on the root directory which contains at least a "TOKENPROD" or "TOKENDEV" key/value pair.
+You need an env file ("env.env") on the root directory which contains a "TOKEN" key/value pair.
 
 Example:
 ```shell
-TOKEN_PROD=YOURSECRETKEYGOESHERE
-```
-Another example where you have the two possible token env vars:
-```shell
-TOKEN_PROD=YOURSECRETKEYGOESHERE
-TOKEN_DEV=YOURSECRETKEYGOESHERE
+TOKEN=YOURSECRETKEYGOESHERE
 ```
 
 ## Supported Platforms
