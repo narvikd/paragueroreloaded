@@ -23,10 +23,11 @@ var phrases = []string{
 }
 
 func getMsg(senderMention string) string {
+	newPhrases := genMsg()
 	message := "Por la gloria " +
-		genMsg()[0] + ", " +
-		genMsg()[1] + " y " +
-		genMsg()[2] + ", " +
+		newPhrases[0] + ", " +
+		newPhrases[1] + " y " +
+		newPhrases[2] + ", " +
 		"yo te bendigo y te doy la bienvenida, " +
 		senderMention
 	return message
