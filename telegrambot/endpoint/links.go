@@ -14,7 +14,7 @@ func links(bot *tb.Bot, route string) {
 		),
 		menu.Row(
 			menu.URL("Enlace grupo 🔗", "https://bit.ly/dawdamfc"),
-			menu.URL("Offtopic (+18) 😈", "https://t.me/joinchat/DcMvCFEtr3l7ACTAPU2aLQ"),
+			menu.URL("Offtopic (+18) 😈", "https://t.me/joinchat/kZfRLk6IXO0wNWE0"),
 		),
 	)
 	telegrambot.SendKeyboard(bot, route, "Aquí los tienes, vago de mierda.", menu)
