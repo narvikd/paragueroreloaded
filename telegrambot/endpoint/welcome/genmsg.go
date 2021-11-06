@@ -22,8 +22,8 @@ var phrases = []string{
 	"de la España programadora",
 }
 
-func getMsg(senderMention string) string {
-	newPhrases := genMsg()
+func getWelcomeMsg(senderMention string) string {
+	newPhrases := genWelcomeMsg()
 	message := "Por la gloria " +
 		newPhrases[0] + ", " +
 		newPhrases[1] + " y " +
@@ -33,7 +33,7 @@ func getMsg(senderMention string) string {
 	return message
 }
 
-func genMsg() []string {
+func genWelcomeMsg() []string {
 	var msgSlice []string
 	for len(msgSlice) < 3 {
 		rndStr := stringkit.RandomString(phrases)
