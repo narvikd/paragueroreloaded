@@ -38,7 +38,7 @@ func IsAfternoon() bool {
 	return isBetweenTimes(start, end)
 }
 
-func isEvening() bool {
+func IsEvening() bool {
 	start := "18:00:00"
 	end := "23:59:59"
 	return isBetweenTimes(start, end)

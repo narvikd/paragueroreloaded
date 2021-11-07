@@ -17,8 +17,7 @@ func Pole(bot *tb.Bot, src *tb.Message) {
 	if timekit.IsMidnight() && cleanedReceivedMessage == "pole" && !isPoleExhausted() {
 		chatID := tb.ChatID(src.Chat.ID)
 		countPole++
-		msg := handler.MakeNewMention(src) + " " + getPoleMedal()
-		telegrambot.SendMessage(bot, chatID, msg)
+		telegrambot.SendMessage(bot, chatID, handleMedal(src))
 	}
 }
 
@@ -26,14 +25,14 @@ func isPoleExhausted() bool {
 	return countPole >= maxPoles
 }
 
-func getPoleMedal() string {
+func handleMedal(src *tb.Message) string {
 	switch countPole {
 	case 1:
-		return "ha hecho la pole. Medalla de oro!"
+		return handler.MakeNewMention(src) + " ha hecho la pole. Medalla de oro!"
 	case 2:
-		return "ha hecho la subpole. Medalla de plata!"
+		return handler.MakeNewMention(src) + " ha hecho la subpole. Medalla de plata!"
 	case 3:
-		return "ha hecho un fail. Pa tu casa, champion"
+		return handler.MakeNewMention(src) + " ha hecho un fail. Pa tu casa, champion"
 	default:
 		return "Error en la pole"
 	}
