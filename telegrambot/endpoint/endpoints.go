@@ -13,6 +13,7 @@ import (
 func LoadEndpoints(bot *tb.Bot) {
 	links(bot, "/links")
 	handler.MsgEndpoint(bot, "/ban", "Venga tonto, pa tu casa")
+	handler.MsgEndpoint(bot, "/java", getJavaCourses())
 	onuserjoin.AddEndpoint(bot, welcomeEndpoint.Welcome)
 	ontext.AddEndpoint(bot, paraguas)
 	onsticker.AddEndpoint(bot, paraguasSticker)
