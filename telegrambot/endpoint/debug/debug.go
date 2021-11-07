@@ -25,7 +25,7 @@ func GetChatID(bot *tb.Bot, route string) {
 	bot.Handle(route, func(src *tb.Message) {
 		if middlewares.IsAdmin(bot, src) {
 			chatID := tb.ChatID(src.Chat.ID)
-			telegrambot.SendMessage(bot, chatID, "La ID de este grupo es: "+strconv.FormatInt(src.Chat.ID, 10))
+			telegrambot.SendMessage(bot, chatID, "La ID de este chat es: "+strconv.FormatInt(src.Chat.ID, 10))
 		}
 	})
 }

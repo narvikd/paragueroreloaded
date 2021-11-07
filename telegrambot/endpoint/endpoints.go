@@ -23,7 +23,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	handleSendMsgAdminDAW(bot, "/daw")
 	handleSendGroupMsg(bot, "/group")
 	debugEndpoint.GetCurrentTime(bot, "/time")
-	debugEndpoint.GetChatID(bot, "/groupid")
+	debugEndpoint.GetChatID(bot, "/chatid")
 
 	// UNUSED:
 	// debugEndpoint.PrintSrc(bot, "/src")
