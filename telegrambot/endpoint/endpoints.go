@@ -20,7 +20,10 @@ func LoadEndpoints(bot *tb.Bot) {
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
 	onsticker.AddEndpoint(bot, paraguasSticker)
+	handleSendMsgAdminDAW(bot, "/daw")
+	handleSendGroupMsg(bot, "/group")
 	debugEndpoint.GetCurrentTime(bot, "/time")
+	debugEndpoint.GetChatID(bot, "/groupid")
 
 	// UNUSED:
 	// debugEndpoint.PrintSrc(bot, "/src")
