@@ -1,21 +1,11 @@
 package endpoint
 
-import (
-	tb "gopkg.in/tucnak/telebot.v2"
-	"paraguero_reloaded/internal/stringkit"
-	"paraguero_reloaded/telegrambot"
-	"strings"
-)
-
-func java(bot *tb.Bot, src *tb.Message) {
-	const pattern = "\\bjava\\b"
-	cleanedReceivedMessage := strings.ToLower(src.Text)
-
-	if stringkit.IsRegexMatch(cleanedReceivedMessage, pattern) {
-		chatID := tb.ChatID(src.Chat.ID)
-		const msg = "Decir que java es bueno porque funciona en todos lados es como decir que el sexo anal " +
-			"es bueno porque funciona en todos los géneros."
-
-		telegrambot.SendMessage(bot, chatID, msg)
-	}
+func getJavaCourses() string {
+	const courses = "<b>Complete Java Masterclass [2018, ENG] de Tim Buchalka</b>:\n" +
+		"https://bit.ly/2UDo0PH\n" +
+		"<b>Java Tutorial for Beginners</b>:\n" +
+		"https://www.youtube.com/watch?v=eIrMbAQSU34\n" +
+		"<b>Learn Java 8 - Full Tutorial for Beginners de freeCodeCamp.org</b>:\n" +
+		"https://www.youtube.com/watch?v=grEKMHGYyns"
+	return courses
 }
