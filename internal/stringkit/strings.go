@@ -21,3 +21,20 @@ func SliceContains(slice []string, str string) bool {
 func IsStrEmpty(str string) bool {
 	return str == ""
 }
+
+func SplitStringNumTimes(str string, num int) []string {
+	var words []string
+	start := 0
+	for i := 0; i < len(str); i++ {
+		if i > 0 && i%num == 0 {
+			if i < len(str) {
+				words = append(words, str[start:i])
+				start = i
+			}
+		}
+	}
+	if start < len(str) {
+		words = append(words, str[start:])
+	}
+	return words
+}
