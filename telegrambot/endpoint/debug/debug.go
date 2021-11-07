@@ -11,6 +11,8 @@ import (
 )
 
 var log = logger.GetLog()
+var msgCopy string
+var counterCopyMsg int
 
 func GetStickerInfo(bot *tb.Bot, src *tb.Message) {
 	chatID := tb.ChatID(src.Chat.ID)
@@ -41,5 +43,24 @@ func GetCurrentTime(bot *tb.Bot, route string) {
 			chatID := tb.ChatID(src.Chat.ID)
 			telegrambot.SendMessage(bot, chatID, timekit.NowToHM())
 		}
+	})
+}
+
+func PrintSrc(bot *tb.Bot, route string) {
+	bot.Handle(route, func(src *tb.Message) {
+		chatID := tb.ChatID(src.Chat.ID)
+
+		srcCopy := *src // https://stackoverflow.com/a/38443432
+		log.Warn("src: ")
+		log.Warnln(src)
+
+		msgOriginal := "He procesado: " + strconv.Itoa(srcCopy.ID) + " mensajes desde mi creación"
+		if counterCopyMsg == 0 {
+			msgCopy = "He procesado: " + strconv.Itoa(src.ID) + " mensajes desde mi creación"
+		}
+		counterCopyMsg++
+
+		telegrambot.SendMessage(bot, chatID, "(Original) "+msgOriginal)
+		telegrambot.SendMessage(bot, chatID, "(Copy) "+msgCopy)
 	})
 }

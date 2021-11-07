@@ -23,6 +23,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	debugEndpoint.GetCurrentTime(bot, "/time")
 
 	// UNUSED:
+	// debugEndpoint.PrintSrc(bot, "/src")
 	//debugEndpoint.GetUsername(bot)
 	//onsticker.AddEndpoint(bot, getStickerInfo)
 	//welcomeEndpoint.Debug(bot, "!welcome")
