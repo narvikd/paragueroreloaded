@@ -7,6 +7,7 @@ import (
 	"paraguero_reloaded/telegrambot"
 	"paraguero_reloaded/telegrambot/handler"
 	"paraguero_reloaded/telegrambot/handler/ontext"
+	"paraguero_reloaded/telegrambot/middlewares"
 	"strconv"
 )
 
@@ -18,6 +19,15 @@ func GetStickerInfo(bot *tb.Bot, src *tb.Message) {
 	chatID := tb.ChatID(src.Chat.ID)
 	telegrambot.SendMessage(bot, chatID, src.Sticker.UniqueID)
 	log.Infoln(src.Sticker.UniqueID)
+}
+
+func GetChatID(bot *tb.Bot, route string) {
+	bot.Handle(route, func(src *tb.Message) {
+		if middlewares.IsAdmin(bot, src) {
+			chatID := tb.ChatID(src.Chat.ID)
+			telegrambot.SendMessage(bot, chatID, "La ID de este grupo es: "+strconv.FormatInt(src.Chat.ID, 10))
+		}
+	})
 }
 
 func GetSenderID(bot *tb.Bot, src *tb.Message) {
@@ -39,7 +49,7 @@ func GetUsername(bot *tb.Bot) {
 // GetCurrentTime gets the current time expressed as HH:MM, only the admin user can launch it
 func GetCurrentTime(bot *tb.Bot, route string) {
 	bot.Handle(route, func(src *tb.Message) {
-		if telegrambot.IsAdmin(src) {
+		if middlewares.IsAdmin(bot, src) {
 			chatID := tb.ChatID(src.Chat.ID)
 			telegrambot.SendMessage(bot, chatID, timekit.NowToHM())
 		}

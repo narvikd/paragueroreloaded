@@ -20,11 +20,6 @@ func CreateBot(token string) *tb.Bot {
 	return bot
 }
 
-func IsAdmin(src *tb.Message) bool {
-	adminID := 1099020633
-	return src.Sender.ID == adminID
-}
-
 //func LogEndpointUsage(src *tb.Message, route string) {
 //	logString := src.Sender.Username + "(" + strconv.Itoa(src.Sender.ID) + "): Used -> " + route + " <-."
 //	log.Infoln(logString)
