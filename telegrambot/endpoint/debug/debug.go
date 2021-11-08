@@ -15,12 +15,14 @@ var log = logger.GetLog()
 var msgCopy string
 var counterCopyMsg int
 
+// GetStickerInfo sends and logs the unique id of a sticker
 func GetStickerInfo(bot *tb.Bot, src *tb.Message) {
 	chatID := tb.ChatID(src.Chat.ID)
 	telegrambot.SendMessage(bot, chatID, src.Sticker.UniqueID)
 	log.Infoln(src.Sticker.UniqueID)
 }
 
+// GetChatID sends the ID of the current chat
 func GetChatID(bot *tb.Bot, route string) {
 	bot.Handle(route, func(src *tb.Message) {
 		if middlewares.IsAdmin(bot, src) {
@@ -30,16 +32,18 @@ func GetChatID(bot *tb.Bot, route string) {
 	})
 }
 
+// GetSenderID sends the ID of the user sending the message
 func GetSenderID(bot *tb.Bot, src *tb.Message) {
 	chatID := tb.ChatID(src.Chat.ID)
 	str := strconv.Itoa(src.Sender.ID)
-	msg := handler.MakeNewMention(src) + " tu ID de telegram es: " + str
 	if src.IsForwarded() {
 		str = strconv.Itoa(src.OriginalSender.ID)
 	}
+	msg := handler.MakeNewMention(src) + " tu ID de telegram es: " + str
 	telegrambot.SendMessage(bot, chatID, msg)
 }
 
+// GetUsername logs the Username of the user sending the message
 func GetUsername(bot *tb.Bot) {
 	ontext.AddEndpoint(bot, func(bot *tb.Bot, src *tb.Message) {
 		log.Warnln(src.Sender.Username)
@@ -56,6 +60,7 @@ func GetCurrentTime(bot *tb.Bot, route string) {
 	})
 }
 
+// PrintSrc logs "src" and also tests if it can be cloned
 func PrintSrc(bot *tb.Bot, route string) {
 	bot.Handle(route, func(src *tb.Message) {
 		chatID := tb.ChatID(src.Chat.ID)
