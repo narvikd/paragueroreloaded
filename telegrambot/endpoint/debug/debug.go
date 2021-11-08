@@ -1,4 +1,4 @@
-package debugEndpoint
+package debugendpoint
 
 import (
 	tb "gopkg.in/tucnak/telebot.v2"

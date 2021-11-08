@@ -1,4 +1,4 @@
-package welcomeEndpoint
+package welcomeendpoint
 
 import (
 	"paraguero_reloaded/internal/stringkit"

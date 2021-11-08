@@ -1,4 +1,4 @@
-package welcomeEndpoint
+package welcomeendpoint
 
 import (
 	tb "gopkg.in/tucnak/telebot.v2"

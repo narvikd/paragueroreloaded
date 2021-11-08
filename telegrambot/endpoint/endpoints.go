@@ -2,7 +2,7 @@ package endpoint
 
 import (
 	tb "gopkg.in/tucnak/telebot.v2"
-	debugEndpoint "paraguero_reloaded/telegrambot/endpoint/debug"
+	"paraguero_reloaded/telegrambot/endpoint/debug"
 	"paraguero_reloaded/telegrambot/endpoint/pole"
 	"paraguero_reloaded/telegrambot/endpoint/welcome"
 	"paraguero_reloaded/telegrambot/handler"
@@ -16,14 +16,14 @@ func LoadEndpoints(bot *tb.Bot) {
 	links(bot, "/links")
 	handler.MsgEndpoint(bot, "/ban", "Venga tonto, pa tu casa")
 	handler.MsgEndpoint(bot, "/java", getJavaCourses())
-	onuserjoin.AddEndpoint(bot, welcomeEndpoint.Welcome)
+	onuserjoin.AddEndpoint(bot, welcomeendpoint.Welcome)
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
 	onsticker.AddEndpoint(bot, paraguasSticker)
 	handleSendMsgAdminDAW(bot, "/daw")
 	handleSendGroupMsg(bot, "/group")
-	debugEndpoint.GetCurrentTime(bot, "/time")
-	debugEndpoint.GetChatID(bot, "/chatid")
+	debugendpoint.GetCurrentTime(bot, "/time")
+	debugendpoint.GetChatID(bot, "/chatid")
 
 	// UNUSED:
 	// debugEndpoint.PrintSrc(bot, "/src")
