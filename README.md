@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/narvikd/paragueroreloaded)](https://goreportcard.com/report/github.com/narvikd/paragueroreloaded)  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # Paraguas Bot Reloaded
 
 ## Usage
