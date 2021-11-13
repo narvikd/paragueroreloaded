@@ -4,6 +4,7 @@ import (
 	tb "gopkg.in/tucnak/telebot.v2"
 	"paraguero_reloaded/telegrambot/endpoint/debug"
 	"paraguero_reloaded/telegrambot/endpoint/pole"
+	"paraguero_reloaded/telegrambot/endpoint/rust"
 	"paraguero_reloaded/telegrambot/endpoint/welcome"
 	"paraguero_reloaded/telegrambot/handler"
 	"paraguero_reloaded/telegrambot/handler/onsticker"
@@ -19,6 +20,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	onuserjoin.AddEndpoint(bot, welcomeendpoint.Welcome)
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
+	ontext.AddEndpoint(bot, rust.GetRustMotivation)
 	onsticker.AddEndpoint(bot, paraguasSticker)
 	handleSendMsgAdminDAW(bot, "/daw")
 	handleSendGroupMsg(bot, "/group")
