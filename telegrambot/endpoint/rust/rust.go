@@ -11,7 +11,7 @@ var phrases = []string{
 	"Puedes crear maravillosas interfaces GUI con " +
 		"<a href=\"https://github.com/linebender/druid\">Druid</a>!",
 	"Puedes crear maravillosas interfaces TUI con " +
-		"<a href=\"https://github.com/clap-rs/clap\">Clap</a>!",
+		"<a href=\"https://github.com/fdehau/tui-rs\">tui-rs</a>!",
 	"Puedes crear maravillosos juegos/gráficos con <b>Game Engines</b> como: " +
 		"<a href=\"https://amethyst.rs/\">Amethyst</a>, " +
 		"<a href=\"https://bevyengine.org/\">Bevy</a> y " +
