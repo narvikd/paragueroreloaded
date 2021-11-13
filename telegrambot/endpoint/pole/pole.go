@@ -26,7 +26,8 @@ func Pole(bot *tb.Bot, src *tb.Message) {
 			telegrambot.SendMessage(bot, chatID, msg)
 		}
 	}
-	if !timekit.IsMidnight() && isPoleExhausted() {
+	// TODO: This is a quick fix and we should refactor it
+	if !timekit.IsMidnight() {
 		countPole = 0
 		poleadoresIDs = nil
 	}
