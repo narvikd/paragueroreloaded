@@ -16,6 +16,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	links(bot, "/links")
 	handler.MsgEndpoint(bot, "/ban", "Venga tonto, pa tu casa")
 	handler.MsgEndpoint(bot, "/java", getJavaCourses())
+	handler.MsgEndpoint(bot, "/rust", getRustMotivation())
 	onuserjoin.AddEndpoint(bot, welcomeendpoint.Welcome)
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
