@@ -2,6 +2,7 @@ package endpoint
 
 import (
 	tb "gopkg.in/tucnak/telebot.v2"
+	"paraguero_reloaded/telegrambot/endpoint/andalu"
 	"paraguero_reloaded/telegrambot/endpoint/debug"
 	"paraguero_reloaded/telegrambot/endpoint/pole"
 	"paraguero_reloaded/telegrambot/endpoint/rust"
@@ -21,6 +22,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
 	ontext.AddEndpoint(bot, rust.GetRustMotivation)
+	ontext.AddEndpoint(bot, andalu.TranslateToAndalu)
 	onsticker.AddEndpoint(bot, paraguasSticker)
 	handleSendMsgAdminDAW(bot, "/daw")
 	handleSendGroupMsg(bot, "/group")
