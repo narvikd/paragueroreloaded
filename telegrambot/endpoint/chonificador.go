@@ -1,4 +1,4 @@
-package chonificador
+package endpoint
 
 import (
 	"github.com/dlclark/regexp2"
@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func TranslateToChoni(bot *tb.Bot, src *tb.Message) {
+func translateToChoni(bot *tb.Bot, src *tb.Message) {
 	if strings.HasPrefix(src.Text, "/choni ") {
 		chatID := tb.ChatID(src.Chat.ID)
 		toTranslate := strings.SplitAfter(src.Text, "/choni ")
