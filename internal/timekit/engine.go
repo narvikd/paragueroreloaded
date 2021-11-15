@@ -43,6 +43,7 @@ func isBetweenTimes(start, end string) bool {
 	return true
 }
 
+// NowToHM returns the current time as a string with: "HH:MM:SS" as a format
 func NowToHM() string {
 	now := time.Now() // Get current time
 
