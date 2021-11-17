@@ -3,9 +3,11 @@ package endpoint
 import (
 	tb "gopkg.in/tucnak/telebot.v2"
 	"paraguero_reloaded/telegrambot/endpoint/andalu"
+	"paraguero_reloaded/telegrambot/endpoint/choni"
 	"paraguero_reloaded/telegrambot/endpoint/debug"
 	"paraguero_reloaded/telegrambot/endpoint/pole"
 	"paraguero_reloaded/telegrambot/endpoint/rust"
+	"paraguero_reloaded/telegrambot/endpoint/sigarro"
 	"paraguero_reloaded/telegrambot/endpoint/welcome"
 	"paraguero_reloaded/telegrambot/handler"
 	"paraguero_reloaded/telegrambot/handler/onsticker"
@@ -22,8 +24,10 @@ func LoadEndpoints(bot *tb.Bot) {
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
 	ontext.AddEndpoint(bot, rust.GetRustMotivation)
+	// TODO: Refactor those 3 so they're readable like before sigarro implementation
 	ontext.AddEndpoint(bot, andalu.TranslateToAndalu)
-	ontext.AddEndpoint(bot, translateToChoni)
+	ontext.AddEndpoint(bot, choni.TranslateToChoni)
+	ontext.AddEndpoint(bot, sigarro.TranslateToSigarro)
 	onsticker.AddEndpoint(bot, paraguasSticker)
 	handleSendMsgAdminDAW(bot, "/daw")
 	handleSendGroupMsg(bot, "/group")
