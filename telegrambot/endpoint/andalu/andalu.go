@@ -2,6 +2,7 @@ package andalu
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/valyala/fasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
 	url2 "net/url"
@@ -15,12 +16,12 @@ import (
 func TranslateToAndalu(bot *tb.Bot, src *tb.Message) {
 	if strings.HasPrefix(src.Text, "/andalu ") {
 		toTranslate := strings.SplitAfter(src.Text, "/andalu ")
-		chatID, model := Common(bot, src, toTranslate[1])
+		chatID, model, _ := Common(bot, src, toTranslate[1])
 		telegrambot.SendMessage(bot, chatID, model.Andaluh)
 	}
 }
 
-func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, *Andalu) {
+func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, *Andalu, error) {
 	chatID := tb.ChatID(src.Chat.ID)
 
 	client := fasthttp.Client{} // Create fasthttp client
@@ -36,13 +37,15 @@ func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, *Andal
 
 	// Make request
 	if err := client.DoTimeout(req, res, 5*time.Second); err != nil {
-		telegrambot.SendMessage(bot, chatID, "Ayy mi arma esa riqüest es muy lenta mi arma")
+		telegrambot.SendMessage(bot, chatID, "Lo siento mi arma etoy de zieta, luego me dise ok")
+		return 0, nil, err
 	}
 
 	// Check statuscode
 	if res.StatusCode() != 200 {
 		status := strconv.Itoa(res.StatusCode())
 		telegrambot.SendMessage(bot, chatID, "Mi arma ha ocurriu un errur con la riqüest. Errur: "+status)
+		return 0, nil, errors.New("status code not 200")
 	}
 
 	// Unmarshal the andalu
@@ -50,8 +53,9 @@ func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, *Andal
 	err := json.Unmarshal(res.Body(), &model)
 	if err != nil {
 		telegrambot.SendMessage(bot, chatID, "Killu nu puedo parzea esto")
+		return 0, nil, err
 	}
 
 	// If everything was ok, return the model
-	return chatID, model
+	return chatID, model, nil
 }

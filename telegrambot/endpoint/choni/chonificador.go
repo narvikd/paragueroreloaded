@@ -1,6 +1,7 @@
 package choni
 
 import (
+	"errors"
 	"github.com/dlclark/regexp2"
 	"github.com/valyala/fasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
@@ -13,12 +14,12 @@ import (
 func TranslateToChoni(bot *tb.Bot, src *tb.Message) {
 	if strings.HasPrefix(src.Text, "/choni ") {
 		toTranslate := strings.SplitAfter(src.Text, "/choni ")
-		chatID, msg := Common(bot, src, toTranslate[1])
+		chatID, msg, _ := Common(bot, src, toTranslate[1])
 		telegrambot.SendMessage(bot, chatID, msg)
 	}
 }
 
-func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, string) {
+func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, string, error) {
 	chatID := tb.ChatID(src.Chat.ID)
 
 	client := fasthttp.Client{} // Create fasthttp client
@@ -39,13 +40,15 @@ func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, string
 
 	// Make request
 	if err := client.DoTimeout(req, res, 5*time.Second); err != nil {
-		telegrambot.SendMessage(bot, chatID, "aYy miiih armaaah eshah rIqüesT Es MuY lentaah mih Arma")
+		telegrambot.SendMessage(bot, chatID, "loOh çieNtoooh miIh aRMaaH etoy dEeH çiEtaaaH, lueGooh meeH Diçeeh OK")
+		return 0, "", err
 	}
 
 	// Check statuscode
 	if res.StatusCode() != 200 {
 		status := strconv.Itoa(res.StatusCode())
 		telegrambot.SendMessage(bot, chatID, "miiIH arMaaah hAah OkurriuuUh un ErruR kon laAh riqüest. Errur: "+status)
+		return 0, "nil", errors.New("status code not 200")
 	}
 
 	// Formats html with regex because >tfw no good soup library
@@ -56,5 +59,5 @@ func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, string
 	group := match.Groups()
 
 	message := group[1].String()
-	return chatID, message
+	return chatID, message, nil
 }

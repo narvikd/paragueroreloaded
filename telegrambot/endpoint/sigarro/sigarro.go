@@ -14,9 +14,10 @@ func TranslateToSigarro(bot *tb.Bot, src *tb.Message) {
 
 		toTranslate := strings.SplitAfter(src.Text, "/sigarro ")
 
-		_, andaluMsg := andalu.Common(bot, src, toTranslate[1])
-		_, choniMsg := choni.Common(bot, src, andaluMsg.Andaluh)
-
-		telegrambot.SendMessage(bot, chatID, choniMsg)
+		_, andaluMsg, errAndalu := andalu.Common(bot, src, toTranslate[1])
+		if errAndalu == nil {
+			_, choniMsg, _ := choni.Common(bot, src, andaluMsg.Andaluh)
+			telegrambot.SendMessage(bot, chatID, choniMsg)
+		}
 	}
 }
