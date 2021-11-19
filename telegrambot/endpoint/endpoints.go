@@ -5,6 +5,7 @@ import (
 	"paraguero_reloaded/telegrambot/endpoint/andalu"
 	"paraguero_reloaded/telegrambot/endpoint/choni"
 	"paraguero_reloaded/telegrambot/endpoint/debug"
+	"paraguero_reloaded/telegrambot/endpoint/kotlin"
 	"paraguero_reloaded/telegrambot/endpoint/pole"
 	"paraguero_reloaded/telegrambot/endpoint/rust"
 	"paraguero_reloaded/telegrambot/endpoint/sigarro"
@@ -24,6 +25,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
 	ontext.AddEndpoint(bot, rust.GetRustMotivation)
+	ontext.AddEndpoint(bot, kotlin.GetKotlinMotivation)
 	// TODO: Refactor those 3 so they're readable like before sigarro implementation
 	ontext.AddEndpoint(bot, andalu.TranslateToAndalu)
 	ontext.AddEndpoint(bot, choni.TranslateToChoni)
