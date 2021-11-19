@@ -1,4 +1,4 @@
-package rust
+package kotlin
 
 import (
     tb "gopkg.in/tucnak/telebot.v2"
