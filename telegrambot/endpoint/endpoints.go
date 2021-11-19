@@ -6,6 +6,7 @@ import (
 	"paraguero_reloaded/telegrambot/endpoint/debug"
 	"paraguero_reloaded/telegrambot/endpoint/pole"
 	"paraguero_reloaded/telegrambot/endpoint/rust"
+	"paraguero_reloaded/telegrambot/endpoint/kotlin"
 	"paraguero_reloaded/telegrambot/endpoint/welcome"
 	"paraguero_reloaded/telegrambot/handler"
 	"paraguero_reloaded/telegrambot/handler/onsticker"
@@ -22,6 +23,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	ontext.AddEndpoint(bot, paraguas)
 	ontext.AddEndpoint(bot, pole.Pole)
 	ontext.AddEndpoint(bot, rust.GetRustMotivation)
+	ontext.AddEndpoint(bot, kotlin.GetKotlinMotivation)
 	ontext.AddEndpoint(bot, andalu.TranslateToAndalu)
 	ontext.AddEndpoint(bot, translateToChoni)
 	onsticker.AddEndpoint(bot, paraguasSticker)
