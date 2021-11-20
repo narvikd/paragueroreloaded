@@ -27,9 +27,10 @@ func handleSendMsgAdminDAW(bot *tb.Bot, route string) {
 func handleSendGroupMsg(bot *tb.Bot, route string) {
 	bot.Handle(route, func(src *tb.Message) {
 		if middlewares.IsAdmin(bot, src) {
+			const maxLengthTelegramGroupIDs = 14
 			prefix := route + " "
 			msg := strings.Split(src.Text, prefix)
-			msg = stringkit.SplitStringNumTimes(msg[1], 14) // Since group IDs in telegram have 14 characters
+			msg = stringkit.SplitStringNumTimes(msg[1], maxLengthTelegramGroupIDs)
 			chatIDInt, err := strconv.Atoi(msg[0])
 			if err != nil {
 				telegrambot.SendMessage(bot, tb.ChatID(src.Sender.ID),

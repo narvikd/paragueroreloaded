@@ -5,6 +5,7 @@ import (
 	"github.com/dlclark/regexp2"
 	"github.com/valyala/fasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
+	"net/http"
 	"paraguero_reloaded/telegrambot"
 	"strconv"
 	"strings"
@@ -39,13 +40,14 @@ func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, string
 	req.SetBodyString("t=" + toTranslate + "&mayus=1")
 
 	// Make request
-	if err := client.DoTimeout(req, res, 5*time.Second); err != nil {
+	const requestTimeout = 5
+	if err := client.DoTimeout(req, res, requestTimeout*time.Second); err != nil {
 		telegrambot.SendMessage(bot, chatID, "loOh çieNtoooh miIh aRMaaH etoy dEeH çiEtaaaH, lueGooh meeH Diçeeh OK")
 		return 0, "", err
 	}
 
 	// Check statuscode
-	if res.StatusCode() != 200 {
+	if res.StatusCode() != http.StatusOK {
 		status := strconv.Itoa(res.StatusCode())
 		telegrambot.SendMessage(bot, chatID, "miiIH arMaaah hAah OkurriuuUh un ErruR kon laAh riqüest. Errur: "+status)
 		return 0, "nil", errors.New("status code not 200")

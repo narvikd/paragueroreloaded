@@ -5,6 +5,7 @@ import (
 	"errors"
 	"github.com/valyala/fasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
+	"net/http"
 	url2 "net/url"
 	"paraguero_reloaded/telegrambot"
 	"strconv"
@@ -36,13 +37,14 @@ func Common(bot *tb.Bot, src *tb.Message, toTranslate string) (tb.ChatID, *Andal
 	req.SetRequestURI(url)
 
 	// Make request
-	if err := client.DoTimeout(req, res, 5*time.Second); err != nil {
+	const requestTimeout = 5
+	if err := client.DoTimeout(req, res, requestTimeout*time.Second); err != nil {
 		telegrambot.SendMessage(bot, chatID, "Lo siento mi arma etoy de zieta, luego me dise ok")
 		return 0, nil, err
 	}
 
 	// Check statuscode
-	if res.StatusCode() != 200 {
+	if res.StatusCode() != http.StatusOK {
 		status := strconv.Itoa(res.StatusCode())
 		telegrambot.SendMessage(bot, chatID, "Mi arma ha ocurriu un errur con la riqüest. Errur: "+status)
 		return 0, nil, errors.New("status code not 200")
