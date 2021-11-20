@@ -4,11 +4,13 @@
 
 ## Usage
 You need an env file ("env.env") on the root directory which contains a "TOKEN" key/value pair.
-
 Example:
 ```shell
 TOKEN=YOURSECRETKEYGOESHERE
 ```
+If you don't have one, the bot will create it for you.
+
+Use "/help" after you start the bot to see the list of commands available
 
 ## Supported Platforms
 Alpha version tested under these platforms:

@@ -18,21 +18,26 @@ import (
 
 // LoadEndpoints loads all the endpoints, and it's where they're declared
 func LoadEndpoints(bot *tb.Bot) {
+	// Users
+	handler.MsgEndpoint(bot, "/help", getHelp())
 	links(bot, "/links")
-	handler.MsgEndpoint(bot, "/ban", "Venga tonto, pa tu casa")
 	handler.MsgEndpoint(bot, "/java", getJavaCourses())
-	onuserjoin.AddEndpoint(bot, welcomeendpoint.Welcome)
 	ontext.AddEndpoint(bot, paraguas)
+	onsticker.AddEndpoint(bot, paraguasSticker)
 	ontext.AddEndpoint(bot, pole.Pole)
+	onuserjoin.AddEndpoint(bot, welcomeendpoint.Welcome)
+	// User jokes
+	handler.MsgEndpoint(bot, "/ban", "Venga tonto, pa tu casa")
 	ontext.AddEndpoint(bot, rust.GetRustMotivation)
 	ontext.AddEndpoint(bot, kotlin.GetKotlinMotivation)
 	// TODO: Refactor those 3 so they're readable like before sigarro implementation
 	ontext.AddEndpoint(bot, andalu.TranslateToAndalu)
 	ontext.AddEndpoint(bot, choni.TranslateToChoni)
 	ontext.AddEndpoint(bot, sigarro.TranslateToSigarro)
-	onsticker.AddEndpoint(bot, paraguasSticker)
+	// Admins
 	handleSendMsgAdminDAW(bot, "/daw")
 	handleSendGroupMsg(bot, "/group")
+	// Admin Debug
 	debugendpoint.GetCurrentTime(bot, "/time")
 	debugendpoint.GetChatID(bot, "/chatid")
 
