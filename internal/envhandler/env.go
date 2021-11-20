@@ -9,7 +9,9 @@ import (
 	"paraguero_reloaded/internal/clearconsole"
 	"paraguero_reloaded/internal/handleInterrupts"
 	"paraguero_reloaded/internal/logger"
+	"paraguero_reloaded/internal/osutils"
 	"paraguero_reloaded/internal/stringkit"
+	"path/filepath"
 	"runtime"
 	"strings"
 )
@@ -77,8 +79,14 @@ func isConsoleInputOK(input string) bool {
 
 func writeTokenToFile(fileName string, content string) {
 	token := "TOKEN=" + content
+
+	path, errPath := osutils.GetExecAbsPathFile(fileName)
+	if errPath != nil {
+		log.Fatalln(errPath)
+	}
+
 	// If the file doesn't exist, create it, or append to the file
-	file, err := os.OpenFile(fileName, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(filepath.Clean(path), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
 		log.Fatalln(errors.Wrap(err, "couldn't open token file"))
 	}
