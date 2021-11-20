@@ -14,6 +14,7 @@ TOKEN=YOURSECRETKEYGOESHERE
 Alpha version tested under these platforms:
 * MacOS Intel
 * Linux 64 bits
+* Windows 64 bits LTSC 2019
 
 ## Compilation instructions:
 ```shell
