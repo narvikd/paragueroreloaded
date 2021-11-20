@@ -1,0 +1,27 @@
+on:
+  release:
+    types: [created]
+
+jobs:
+  non-arm:
+    name: release linux/amd64
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos:
+          - "linux"
+          - "darwin"
+          - "windows"
+        goarch:
+          - "amd64"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: wangyoucao577/go-release-action@v1.21
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          goos: ${{ matrix.goos }}
+          goarch: ${{ matrix.goarch }}
+          executable_compression: upx --lzma
+          ldflags: "-w -s"
+          md5sum: TRUE
+          sha256sum: TRUE
