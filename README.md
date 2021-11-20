@@ -18,7 +18,7 @@ Alpha version tested under these platforms:
 ## Compilation instructions:
 ```shell
 git clone $repo
-cd $repo/app
+cd $repo
 go mod tidy -v
 go build
 ```
