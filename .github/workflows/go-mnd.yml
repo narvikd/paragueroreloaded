@@ -1,0 +1,23 @@
+name: Go-mnd
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      GO111MODULE: on
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run go-mnd
+        uses: tommy-muehle/go-mnd@master
+        with:
+          args: ./...
