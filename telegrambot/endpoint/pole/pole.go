@@ -15,9 +15,15 @@ const maxPoles = 3
 var countPole = 0
 var poleadoresIDs []string
 
+// TODO: Refactor this, and instead of receiving "subpole" in "pole" as ok, only accept appropriately strings on appropriately pole positions.
+var acceptedPoleStrings = []string{"pole", "mastil", "mástil", "oro",
+	"subpole", "plata",
+	"fail", "bronce"}
+
 func Pole(bot *tb.Bot, src *tb.Message) {
 	cleanedReceivedMessage := strings.ToLower(src.Text)
-	if timekit.IsMidnight() && cleanedReceivedMessage == "pole" && !isPoleExhausted() {
+	isPoleMsgReceived := stringkit.SliceContains(acceptedPoleStrings, cleanedReceivedMessage)
+	if timekit.IsMidnight() && isPoleMsgReceived && !isPoleExhausted() {
 		chatID := tb.ChatID(src.Chat.ID)
 		if haveINotSeenThisPoleadorID(src.Sender.ID) {
 			telegrambot.SendMessage(bot, chatID, handleMedal(src))
