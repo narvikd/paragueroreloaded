@@ -1,10 +1,13 @@
 package stringkit
 
-import "math/rand"
+import (
+	"paraguero_reloaded/internal/random"
+)
 
 // RandomString returns a random string from a slice
 func RandomString(slice []string) string {
-	return slice[rand.Intn(len(slice))]
+	rndNum := random.Num(len(slice))
+	return slice[rndNum]
 }
 
 // SliceContains returns true if a string is in a slice
