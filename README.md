@@ -18,6 +18,13 @@ Alpha version tested under these platforms:
 * Linux 64 bits
 * Windows 64 bits LTSC 2019
 
+## Docker instructions:
+```shell
+git clone $repo
+cd $repo
+docker-compose up --build --detach
+```
+
 ## Compilation instructions:
 ```shell
 git clone $repo
