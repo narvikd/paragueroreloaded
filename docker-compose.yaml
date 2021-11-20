@@ -1,0 +1,9 @@
+version: "3.5"
+
+services:
+  paraguero:
+    image: narvikd/paragueroreloaded:latest
+    container_name: paraguero
+    volumes:
+      - /srv/data/paraguero/env.env:/app/env.env
+    restart: always
