@@ -1,18 +1,10 @@
 name: Run Gosec
-
-on:
-  push:
-    branches:
-      - '**'
-  pull_request:
-    branches:
-      - '**'
-
+on: [push, pull_request]
 jobs:
-
   tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch Repository
       - uses: actions/checkout@v2
 
       - name: Run Gosec Security Scanner
