@@ -8,7 +8,7 @@ on:
       - '**'
 
 jobs:
-  Golint:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Repository
@@ -17,3 +17,10 @@ jobs:
         uses: snyk/actions/golang@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
+          args: --sarif-file-output=snyk.sarif
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif
