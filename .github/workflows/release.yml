@@ -4,7 +4,7 @@ on:
 
 jobs:
   non-arm:
-    name: release linux/amd64
+    name: release
     runs-on: ubuntu-latest
     strategy:
       matrix:
