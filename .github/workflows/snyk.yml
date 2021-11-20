@@ -1,0 +1,19 @@
+name: Snyk security
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  Golint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Repository
+        uses: actions/checkout@v2
+      - name: Run Snyk to check for vulnerabilities
+          uses: snyk/actions/golang@master
+          env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
