@@ -1,9 +1,9 @@
 package pole
 
 import (
+	"github.com/narvikd/timekit"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"paraguero_reloaded/internal/stringkit"
-	"paraguero_reloaded/internal/timekit"
 	"paraguero_reloaded/telegrambot"
 	"paraguero_reloaded/telegrambot/handler"
 	"strconv"

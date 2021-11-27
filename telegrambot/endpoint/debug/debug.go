@@ -1,9 +1,9 @@
 package debugendpoint
 
 import (
+	"github.com/narvikd/timekit"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"paraguero_reloaded/internal/logger"
-	"paraguero_reloaded/internal/timekit"
 	"paraguero_reloaded/telegrambot"
 	"paraguero_reloaded/telegrambot/handler"
 	"paraguero_reloaded/telegrambot/handler/ontext"
