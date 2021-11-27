@@ -2,45 +2,40 @@ package timekit
 
 import (
 	"fmt"
-	"paraguero_reloaded/internal/logger"
+	"github.com/pkg/errors"
 	"time"
 )
 
-var log = logger.GetLog()
-
-func isBetweenTimes(start, end string) bool {
+func IsBetweenTimes(start, end string) error {
 	now, errNow := time.Parse("15:04:05", NowToHM()) // Get current time
 	if errNow != nil {
-		log.Errorln("Couldn't get current time" + errNow.Error())
-		return false
+		return errors.Wrap(errNow, "couldn't get current time")
 	}
 
 	startTime, errStartTime := time.Parse("15:04:05", start) // Get start time
 	if errStartTime != nil {
-		log.Errorln("Couldn't get start time" + errNow.Error())
-		return false
+		return errors.Wrap(errStartTime, "couldn't get start time")
 	}
 
 	endTime, errEndTime := time.Parse("15:04:05", end) // Get end time
 	if errEndTime != nil {
-		log.Errorln("Couldn't get end time" + errNow.Error())
-		return false
+		return errors.Wrap(errEndTime, "couldn't get end time")
 	}
 
 	// Check if current time is between start and end time
 	if startTime.Before(endTime) {
 		if now.After(startTime) && now.Before(endTime) {
-			return true
+			return nil
 		}
-		return false
+		return errors.New("current time isn't between start and end time")
 	}
 
-	// If right now we're at a point in time after the endTime or before the startTime, return false
+	// If right now we're at a point in time after the endTime or before the startTime
 	if now.After(endTime) || now.Before(startTime) {
-		return false
+		return errors.New("current time after endTime or before startTime")
 	}
 
-	return true
+	return nil
 }
 
 // NowToHM returns the current time as a string with: "HH:MM:SS" as a format
@@ -53,16 +48,25 @@ func NowToHM() string {
 	seconds := now.Second()
 
 	// Convert time to string
-	hoursStr := timeToStr(hours)
-	minutesStr := timeToStr(minutes)
-	secondsStr := timeToStr(seconds)
+	hoursStr := TimeToStr(hours)
+	minutesStr := TimeToStr(minutes)
+	secondsStr := TimeToStr(seconds)
 
 	// Return it
 	hoursMinutesStr := hoursStr + ":" + minutesStr + ":" + secondsStr
 	return hoursMinutesStr
 }
 
-func timeToStr(time int) string {
+/*
+	TimeToStr converts an int (time.Hour for example) into a string.
+
+	If we have 1 hours and 1 seconds, we don't want to make a date as: "1:1". But 01:01.
+
+	That's why it checks for digits lower than 10.
+
+	Warning: Don't use it with non-validated times like "61 seconds".
+*/
+func TimeToStr(time int) string {
 	if time < 10 {
 		return "0" + fmt.Sprintf("%d", time)
 	}
