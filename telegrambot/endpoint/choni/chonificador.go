@@ -2,8 +2,8 @@ package choni
 
 import (
 	"errors"
+	"git.dani.icu/narvikd/tempfasthttp"
 	"github.com/dlclark/regexp2"
-	"github.com/valyala/fasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"net/http"
 	"paraguero_reloaded/telegrambot"

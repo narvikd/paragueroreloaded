@@ -3,7 +3,7 @@ package andalu
 import (
 	"encoding/json"
 	"errors"
-	"github.com/valyala/fasthttp"
+	"git.dani.icu/narvikd/tempfasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"net/http"
 	url2 "net/url"
