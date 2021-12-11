@@ -6,7 +6,7 @@ require (
 	git.dani.icu/narvikd/tempfasthttp v1.31.2
 	github.com/dlclark/regexp2 v1.4.0
 	github.com/joho/godotenv v1.4.0
-	github.com/narvikd/timekit v1.1.0
+	github.com/narvikd/timekit v1.2.1
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.8.1
 	gopkg.in/tucnak/telebot.v2 v2.4.0
