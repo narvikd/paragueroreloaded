@@ -14,10 +14,10 @@ func GetToken(fileName string) (string, error) {
 	}
 
 	env := os.Getenv("TOKEN")
-	if env != "" {
-		return env, nil
+	if env == "" {
+		return "", errors.New("\"TOKEN\" env variable was not found on the .env file")
 	}
-	return "", errors.New("\"TOKEN\" env variable was not found on the .env file")
+	return env, nil
 }
 
 // loadEnv loads an .env file specified as a parameter
