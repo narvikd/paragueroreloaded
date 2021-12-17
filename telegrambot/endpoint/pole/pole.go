@@ -20,7 +20,7 @@ var acceptedPoleStrings = []string{"pole", "mastil", "mástil", "oro",
 	"subpole", "plata",
 	"fail", "bronce"}
 
-func Pole(bot *tb.Bot, src *tb.Message) {
+func Run(bot *tb.Bot, src *tb.Message) {
 	cleanedReceivedMessage := strings.ToLower(src.Text)
 	isPoleMsgReceived := stringkit.SliceContains(acceptedPoleStrings, cleanedReceivedMessage)
 	if timekit.IsMidnight() && isPoleMsgReceived && !isPoleExhausted() {
