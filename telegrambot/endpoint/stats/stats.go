@@ -33,7 +33,7 @@ func getStats() string {
 	fmt.Fprintf(w, "Memory used: \t%s / %s (%s garbage collected)\n",
 		humanize.Bytes(stats.Alloc), humanize.Bytes(stats.Sys), humanize.Bytes(stats.TotalAlloc))
 	fmt.Fprintf(w, "Concurrent tasks: \t%s\n", humanize.Comma(int64(runtime.NumGoroutine())))
-	w.Flush()
+	_ = w.Flush()
 	out := "<pre>" + buf.String() + "</pre>"
 	return out
 }
