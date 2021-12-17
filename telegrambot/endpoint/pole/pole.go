@@ -43,8 +43,8 @@ func isPoleExhausted() bool {
 	return countPole >= maxPoles
 }
 
-func haveINotSeenThisPoleadorID(poleadorID int) bool {
-	idStr := strconv.Itoa(poleadorID)
+func haveINotSeenThisPoleadorID(poleadorID int64) bool {
+	idStr := strconv.FormatInt(poleadorID, 10)
 	if !stringkit.SliceContains(poleadoresIDs, idStr) {
 		countPole++
 		poleadoresIDs = append(poleadoresIDs, idStr)
