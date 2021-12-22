@@ -21,10 +21,10 @@ var acceptedPoleStrings = []string{"pole", "mastil", "mástil", "oro",
 	"fail", "bronce"}
 
 func Run(bot *tb.Bot, src *tb.Message) {
+	chatID := tb.ChatID(src.Chat.ID)
 	cleanedReceivedMessage := strings.ToLower(src.Text)
 	isPoleMsgReceived := stringkit.SliceContains(acceptedPoleStrings, cleanedReceivedMessage)
-	if timekit.IsMidnight() && isPoleMsgReceived && !isPoleExhausted() {
-		chatID := tb.ChatID(src.Chat.ID)
+	if timekit.IsMidnight() && isPoleMsgReceived && !isPoleExhausted() && chatID == -1001155539490 {
 		if haveINotSeenThisPoleadorID(src.Sender.ID) {
 			telegrambot.SendMessage(bot, chatID, handleMedal(src))
 		} else {
