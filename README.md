@@ -1,5 +1,11 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/narvikd/paragueroreloaded)](https://goreportcard.com/report/github.com/narvikd/paragueroreloaded)  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+<h1 align="center">Deprecated</h1>
+<p align="center">
+Paraguas Bot Reloaded has been deprecated. Important bugs may not be fixed, but PRs are still welcomed.
+</p>
+
+
 # Paraguas Bot Reloaded
 
 ## Usage
