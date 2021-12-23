@@ -3,6 +3,7 @@ module paraguero_reloaded
 go 1.17
 
 require (
+	github.com/TwiN/go-color v1.0.1
 	github.com/dustin/go-humanize v1.0.0
 	github.com/joho/godotenv v1.4.0
 	github.com/narvikd/timekit v1.2.1

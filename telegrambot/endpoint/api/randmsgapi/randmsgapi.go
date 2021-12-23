@@ -6,6 +6,7 @@ import (
 	"github.com/valyala/fasthttp"
 	tb "gopkg.in/tucnak/telebot.v2"
 	"paraguero_reloaded/telegrambot"
+	"paraguero_reloaded/telegrambot/handler/logger"
 	"strconv"
 	"time"
 )
@@ -21,6 +22,7 @@ func Get(bot *tb.Bot, route string) {
 		chatID := tb.ChatID(src.Chat.ID)
 		msg, _ := Dial(route)
 		if msg != "" {
+			logger.Logger(src)
 			telegrambot.SendMessage(bot, chatID, msg)
 		}
 	})

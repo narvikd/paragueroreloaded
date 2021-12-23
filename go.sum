@@ -1,3 +1,5 @@
+github.com/TwiN/go-color v1.0.1 h1:kOihQEqDY7oIHUr1clPE2vuDhfTD5Bj45Tvu2jU7iIg=
+github.com/TwiN/go-color v1.0.1/go.mod h1:xDwSZwPf9rYRflSPYOehCoROibB4FZDtjo03v0QK6EA=
 github.com/andybalholm/brotli v1.0.2 h1:JKnhI/XQ75uFBTiuzXpzFrUriDPiZjlOSzh6wXogP0E=
 github.com/andybalholm/brotli v1.0.2/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
