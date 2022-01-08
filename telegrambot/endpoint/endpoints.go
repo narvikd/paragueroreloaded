@@ -20,6 +20,7 @@ func LoadEndpoints(bot *tb.Bot) {
 	// Users
 	randmsgapi.Get(bot, "/help")
 	randmsgapi.Get(bot, "/java")
+	randmsgapi.Get(bot, "/javascript")
 	ontext.AddEndpoint(bot, whitelist.Only(stats.SendStats))
 	links(bot, "/links")
 	ontext.AddEndpoint(bot, whitelist.Only(paraguas))
