@@ -6,11 +6,11 @@ import (
 	"os"
 )
 
-// GetToken returns the token from the .env file. It should be used after loadEnv is successful
+// GetToken returns the token from the .env file.
 func GetToken(fileName string) (string, error) {
-	err := loadEnv(fileName)
+	err := godotenv.Load(fileName)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, "error loading config file")
 	}
 
 	env := os.Getenv("TOKEN")
@@ -18,10 +18,4 @@ func GetToken(fileName string) (string, error) {
 		return "", errors.New("\"TOKEN\" env variable was not found on the .env file")
 	}
 	return env, nil
-}
-
-// loadEnv loads an .env file specified as a parameter
-func loadEnv(fileName string) error {
-	err := godotenv.Load(fileName)
-	return errors.Wrap(err, "error loading config file")
 }
